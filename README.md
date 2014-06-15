@@ -24,6 +24,6 @@ Loops through directories you specify on the command line, checks out all the br
 
 ####Example
 ~~~
-# Finds all folders that have a .git folder inside them (limiting to 3 directories deep), and comparing each branch in thos directories to stash/develop in their remote refs list
-find . -type d -name .git -maxdepth 3  -print | sed s/.git//g | xargs outdated_git_branches/git_status.rb -r stash -b develop
+# Finds all folders that have a .git folder inside them (limiting to 3 directories deep), and comparing each branch in thos directories to origin/master in their remote refs list
+find . -type d -name .git -maxdepth 3 | sed s/.git//g | xargs outdated_git_branches/git_status.rb -b master
 ~~~
