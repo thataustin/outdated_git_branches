@@ -20,7 +20,7 @@ Common options:
 
 ####What's it do?
 
-Loops through directories you specify on the command line, checks out all the branches in each of those directories, compare them with the develop branch (or the value of the -b option) on the remote ref named origin (or the value of the -r option) and spits out a rudimentary report letting you know which branches in which directories are out of date with that remote (so long as they are out of date by more than or equal to the number of commits specified by the -t flag)
+Loops through directories you specify on the command line, `git checkout`s out all the branches in each of those directories, compares them with the develop branch (or the branch specified by the `-b` option) on the remote named `origin` (or the remote specified by the `-r` option) and spits out a report letting you know which branches in which directories are out of date with that remote.  Right now, it just checks to see how many commits the branch is behind against the `-t` threshold option to know if a branch is "out of date"
 
 
 ####Getting Started
