@@ -20,7 +20,7 @@ Common options:
 
 ####What's it do?
 
-Loops through directories you specify on the command line, checks out all the branches in each of those directories, compare them with the develop branch (or the -b option) and spits out a rudimentary report letting you know which branches in which directories are out of date (so long as they are out of date by more than or equal to the number of commits specified by the -t flag)
+Loops through directories you specify on the command line, checks out all the branches in each of those directories, compare them with the develop branch (or the value of the -b option) on the remote ref named origin (or the value of the -r option) and spits out a rudimentary report letting you know which branches in which directories are out of date with that remote (so long as they are out of date by more than or equal to the number of commits specified by the -t flag)
 
 ####Example
 ~~~
