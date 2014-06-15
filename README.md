@@ -1,7 +1,7 @@
 outdated_git_branches
 =====================
 
-Emails you whenever a branch in your repo gets too out of date (helps keep stuff clean on large teams)
+Find out if any branches in your git repo are out of date and need some tending to (helps keep stuff clean on large teams)
 
 ~~~
 Usage: git_status.rb [options] ./folders ./separated/by ./spaces
