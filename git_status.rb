@@ -13,6 +13,8 @@ MAIL_FROM = '',     # eg 'dev@yourcompany.com'
 MAIL_TO = '',       # eg 'dev@yourcompany.com'
 
 # Exclude the following branches from getting compared to develop
+REMOTE_TO_COMPARE_TO = '', # eg 'origin'
+REMOTE_BRANCH_TO_COMPARE_TO = '', # eg 'develop'
 BRANCHES_TO_EXCLUDE = ['develop', 'master']
 
 # Email will only be sent when a branch is more out of date than this number of commits
@@ -127,10 +129,10 @@ end
 def deal_with_git_repository
     deal_with_args(ARGV)
 
-    branch_to_compare_to = "stash/develop"
+    branch_to_compare_to = "#{REMOTE_TO_COMPARE_TO}/#{REMOTE_BRANCH_TO_COMPARE_TO}"
 
     get_all_branches.each do |branch|
-        branch_to_reset_to = "stash/#{branch}"
+        branch_to_reset_to = "#{REMOTE_TO_COMPARE_TO}/#{branch}"
         deal_with_branch(branch, branch_to_compare_to, branch_to_reset_to)
         puts "\n" if debug?
     end
