@@ -39,3 +39,6 @@ But it's designed to make it easy to pipe folder names as arguments (using somet
 # Finds all folders that have a .git folder inside them (limiting to 3 directories deep), and comparing each branch in those directories to origin/master in their remote refs list (master is specified, origin is the default remote)
 find . -type d -name .git -maxdepth 3 | sed s/.git//g | xargs outdated_git_branches/git_status.rb -b master
 ~~~
+
+####Contributing
+Please contribute.  I'll respond quickly, and if you just want something quick, check the Issues list
