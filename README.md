@@ -24,7 +24,7 @@ Loops through directories you specify on the command line, checks out all the br
 
 
 ####Getting Started
-At the moment, you have to git clone this repo and manually run the outdated_git_branches/git_status.rb file.  Please suggest better ways to do this.  I'd consider packaging it as a ruby gem or a debian package if anyone shows interest.
+At the moment, you have to git clone this repo and manually run the outdated_git_branches/git_status.rb file.  Please suggest better ways to do this.  I'd consider packaging it as a ruby gem or a debian package [or something cooler] if anyone shows interest.
 
 ####Examples
 
