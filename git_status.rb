@@ -13,8 +13,8 @@ MAIL_FROM = '',     # eg 'dev@yourcompany.com'
 MAIL_TO = '',       # eg 'dev@yourcompany.com'
 
 # Setup some branch terminology so the script knows what you're trying to compare each potentially outdated branch to
-REMOTE_TO_COMPARE_TO = '', # eg 'origin'
-REMOTE_BRANCH_TO_COMPARE_TO = '', # eg 'develop'
+REMOTE_TO_COMPARE_TO = '' # eg 'origin'
+REMOTE_BRANCH_TO_COMPARE_TO = '' # eg 'develop'
 BRANCHES_TO_EXCLUDE = ['develop', 'master']
 
 # Email will only be sent when a branch is more out of date than this number of commits
