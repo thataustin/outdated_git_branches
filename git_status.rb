@@ -20,8 +20,7 @@ class GitStatus
         # instance defaults
         @dirs = []
         @original_dir = Dir.getwd
-        @current_repo = ''
-        @outdated_branches = []
+        @outdated_branches = {}
     end
 
     def get_all_branches
@@ -47,10 +46,15 @@ class GitStatus
     end
 
     def add_outdated_branch(branch, num_commits_behind)
-        if num_commits_behind.to_i > @threshold
-            @outdated_branches.push(@current_repo) if !@outdated_branches.include? @current_repo
-            @outdated_branches.push("\t#{branch}: #{num_commits_behind} commits behind develop")
-        end
+        return if num_commits_behind.to_i < @threshold.to_i
+
+        current_repo = get_current_git_repo_name
+        @outdated_branches[current_repo] = [] if !@outdated_branches.has_key?(current_repo)
+
+        @outdated_branches[current_repo].push({
+            :branch => branch,
+            :commits_behind => num_commits_behind
+        })
     end
 
     def deal_with_diverged_branch (branch, git_status_output)
@@ -98,6 +102,10 @@ class GitStatus
         end
     end
 
+    def get_current_git_repo_name
+        File.basename `git rev-parse --show-toplevel`.chomp
+    end
+
     def get_status
         # at this point, everything in ARGV should be a git directory
         # that was specified on the command line
@@ -106,7 +114,6 @@ class GitStatus
             # Change into new directory so git commands can be run from there
             puts "cd'ing into #{dir}" if @verbose
             Dir.chdir(dir)
-            @current_repo = dir
 
             deal_with_git_repository(dir)
 
@@ -115,7 +122,7 @@ class GitStatus
             Dir.chdir(@original_dir)
         end
         # return the accrued messages
-        @outdated_branches.join("\n\t")
+        @outdated_branches.to_json
     end
 
 end
