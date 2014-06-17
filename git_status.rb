@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 # native libraries
-require 'net/smtp'
+require 'json'
 
 # local files
 require __dir__ + '/util/git_status_opt_parser'
@@ -21,7 +21,7 @@ class GitStatus
         @dirs = []
         @original_dir = Dir.getwd
         @current_repo = ''
-        @outdated_branch_messages = []
+        @outdated_branches = []
     end
 
     def get_all_branches
@@ -48,8 +48,8 @@ class GitStatus
 
     def add_outdated_branch(branch, num_commits_behind)
         if num_commits_behind.to_i > @threshold
-            @outdated_branch_messages.push(@current_repo) if !@outdated_branch_messages.include? @current_repo
-            @outdated_branch_messages.push("\t#{branch}: #{num_commits_behind} commits behind develop")
+            @outdated_branches.push(@current_repo) if !@outdated_branches.include? @current_repo
+            @outdated_branches.push("\t#{branch}: #{num_commits_behind} commits behind develop")
         end
     end
 
@@ -115,7 +115,7 @@ class GitStatus
             Dir.chdir(@original_dir)
         end
         # return the accrued messages
-        @outdated_branch_messages.join("\n\t")
+        @outdated_branches.join("\n\t")
     end
 
 end
