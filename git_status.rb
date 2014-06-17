@@ -37,7 +37,7 @@ class GitStatus
     end
 
     def checkout_branch(branch)
-        checkout_output = "\t" + `git checkout #{branch}`
+        checkout_output = "\t" + `git checkout #{branch} 2>&1`
         puts checkout_output if @verbose
     end
 
