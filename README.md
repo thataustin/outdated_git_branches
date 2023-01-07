@@ -18,15 +18,15 @@ Common options:
         --version                    Show version
 ~~~
 
-####What's it do?
+#### What's it do?
 
 Loops through directories you specify on the command line, `git checkout`s out all the branches in each of those directories, compares them with the develop branch (or the branch specified by the `-b` option) on the remote named `origin` (or the remote specified by the `-r` option) and spits out a JSON object describing which branches in which directories are out of date with that remote.  Right now, it just checks to see how many commits the branch is behind against the `-t` threshold option to know if a branch is "out of date"
 
 
-####Getting Started
+#### Getting Started
 At the moment, you have to git clone this repo and manually run the outdated_git_branches/git_status.rb file.  Please suggest better ways to do this.  I'd consider packaging it as a ruby gem or a debian package [or something cooler] if anyone shows interest.
 
-####Examples
+#### Examples
 
 In short, you list the git repo folders on the command line like this:
 ~~~
@@ -68,5 +68,5 @@ find . -type d -name .git -maxdepth 3 | sed s/.git//g | xargs outdated_git_branc
 }
 ~~~
 
-####Contributing
+#### Contributing
 Please contribute.  I'll respond quickly, and if you just want something quick, check the Issues list
